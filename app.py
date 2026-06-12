@@ -132,8 +132,7 @@ if st.button("Analyze"):
                 unsafe_allow_html=True
 )
 
-            row2col4.metric("Confidence",
-                f"{confidence_label} ({confidence_score}/100)"
+            row2col4.metric("Confidence", f"{confidence_label} ({confidence_score}/100)"
 )
             if confidence_score >= 75:
                 confidence_label = "High"
