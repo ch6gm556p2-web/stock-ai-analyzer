@@ -50,7 +50,17 @@ if st.button("Analyze"):
             latest = X.iloc[-1:]
             probability = model.predict_proba(latest)[0][1]
 
-            current_price = data["Close"].iloc[-1]
+            latest = X.iloc[-1:]
+probability = model.predict_proba(latest)[0][1]
+
+price_value = data["Close"].iloc[-1]
+
+if hasattr(price_value, "iloc"):
+    current_price = float(price_value.iloc[0])
+else:
+    current_price = float(price_value)
+
+st.subheader(f"{ticker} Forecast")
 
             st.subheader(f"{ticker} Forecast")
 
