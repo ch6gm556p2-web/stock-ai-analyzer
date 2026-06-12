@@ -77,30 +77,30 @@ if st.button("Analyze"):
             upper_price = current_price * (1 + expected_20d_move)
 
             with st.expander("ℹ️ What do these metrics mean?"):
-    st.write("""
-    **Current Price**  
-    Latest stock price pulled from Yahoo Finance.
+            st.write("""
+            **Current Price**  
+            Latest stock price pulled from Yahoo Finance.
 
-    **Model Accuracy**  
-    How often the model correctly predicted whether the stock was higher 20 trading days later during historical testing.
+            **Model Accuracy**  
+            How often the model correctly predicted whether the stock was higher 20 trading days later during historical testing.
 
-    **20-Day Probability**  
-    The model’s estimated chance that the stock will be higher 20 trading days from now. This is not a guarantee, because sadly the market refuses to obey apps built on iPads.
+            **20-Day Probability**  
+            The model’s estimated chance that the stock will be higher 20 trading days from now. This is not a guarantee, because sadly the market refuses to obey apps built on iPads.
 
-    **Risk Score**  
-    A volatility score from 1 to 10 based on recent price movement.  
-    1 = steadier.  
-    10 = very volatile.
+            **Risk Score**  
+            A volatility score from 1 to 10 based on recent price movement.  
+            1 = steadier.  
+            10 = very volatile.
 
-    **Investment Score**  
-    A combined score from 0 to 100 using probability, model accuracy, and risk. Higher is better, but it still depends on the model quality.
+            **Investment Score**  
+            A combined score from 0 to 100 using probability, model accuracy, and risk. Higher is better, but it still depends on the model quality.
 
-    **Estimated 20-Day Value**  
-    A rough estimated price 20 trading days from now using the model probability and recent volatility.
+            **Estimated 20-Day Value**  
+            A rough estimated price 20 trading days from now using the model probability and recent volatility.
 
-    **Likely Range**  
-    A volatility-based price range showing where the stock could reasonably move over the next 20 trading days.
-    """)
+            **Likely Range**  
+            A volatility-based price range showing where the stock could reasonably move over the next 20 trading days.
+            """)
 
             row1col1, row1col2, row1col3, row1col4 = st.columns(4)
 
