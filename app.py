@@ -93,6 +93,20 @@ if st.button("Analyze"):
             Higher = more volatile.
             """)
 
+             **Investment Score**  
+
+             A combined score from 0 to 100 using probability, model accuracy, and risk. Higher is better, but it still depends on the model quality.
+
+            **Estimated 20-Day Value**  
+
+              A rough estimated price 20 trading days from now using the model probability and recent volatility.
+
+            **Likely Range**  
+
+            A volatility-based price range showing where the stock could reasonably move over the next 20 trading days.
+
+             """)
+
             row1col1, row1col2, row1col3, row1col4 = st.columns(4)
 
             row2col1, row2col2, row2col3 = st.columns(3)
