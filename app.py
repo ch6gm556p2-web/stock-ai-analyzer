@@ -67,6 +67,15 @@ if st.button("Analyze"):
 
             st.subheader(f"{ticker} Forecast")
 
+            expected_20d_move = volatility * (20 ** 0.5)
+
+            direction_adjustment = (probability - 0.5) * expected_20d_move
+
+            estimated_20d_price = current_price * (1 + direction_adjustment)
+
+            lower_price = current_price * (1 - expected_20d_move)
+            upper_price = current_price * (1 + expected_20d_move)
+
             with st.expander("ℹ️ What do these metrics mean?"):
                 st.write("""
             **Current Price**
@@ -84,12 +93,14 @@ if st.button("Analyze"):
             Higher = more volatile.
             """)
 
-            col1, col2, col3, col4 = st.columns(4)
+            col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
 
             col1.metric("Current Price", f"${current_price:,.2f}")
             col2.metric("Model Accuracy", f"{accuracy:.1%}")
             col3.metric("20-Day Probability", f"{probability:.1%}")
             col4.metric("Risk Score", f"{risk_score}/10")
+            col6.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
+            col7.metric("Likely Range", f"${lower_price:,.0f} - ${upper_price:,.0f}")
 
             st.progress(float(probability))
 
