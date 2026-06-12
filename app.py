@@ -138,7 +138,7 @@ if st.button("Analyze"):
             else:
                 confidence_label = "Low"
             
-            row2col4.metric("Confidence" confidence_label)
+            row2col4.metric("Confidence", confidence_label)
     
             st.progress(float(probability))
 
