@@ -71,11 +71,6 @@ if st.button("Analyze"):
             col3.metric("20-Day Probability", f"{probability:.1%}")
             col4.metric("Risk Score", f"{risk_score}/10")
 
-            col1.metric("Current Price", f"${float(current_price):,.2f}")
-            col2.metric("Model Accuracy", f"{accuracy:.1%}")
-            col3.metric("20-Day Probability of Being Higher", f"{probability:.1%}")
-    
-
             st.progress(float(probability))
 
             if probability >= 0.65 and accuracy >= 0.55:
