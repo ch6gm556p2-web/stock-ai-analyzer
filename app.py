@@ -57,13 +57,13 @@ if st.button("Analyze"):
             else:
                 current_price = float(price_value)
 
-            recent_returns = data["Close"].pct_change().dropna().tail(60)
+           recent_returns = data["Close"].pct_change().dropna().tail(60)
 
-            volatility = float(recent_returns.std())
-            st.write(type(volatility))
-            st.write(volatility)
+            if hasattr(recent_returns, "columns"):
+            recent_returns = recent_returns.iloc[:, 0]
 
-            risk_score = min(10, max(1, round(volatility * 200)))
+            volatility = recent_returns.std()
+            risk_score = min(10, max(1, round(float(volatility) * 200)))
 
             st.subheader(f"{ticker} Forecast")
 
