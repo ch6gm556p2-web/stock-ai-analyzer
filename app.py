@@ -93,14 +93,18 @@ if st.button("Analyze"):
             Higher = more volatile.
             """)
 
-            col1, col2, col3, col4, col5, col6, col7 = st.columns(7)
+            row1col1, row1col2, row1col3, row1col4 = st.columns(4)
 
-            col1.metric("Current Price", f"${current_price:,.2f}")
-            col2.metric("Model Accuracy", f"{accuracy:.1%}")
-            col3.metric("20-Day Probability", f"{probability:.1%}")
-            col4.metric("Risk Score", f"{risk_score}/10")
-            col6.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
-            col7.metric("Likely Range", f"${lower_price:,.0f} - ${upper_price:,.0f}")
+            row2col1, row2col2, row2col3 = st.columns(3)
+
+            row1col1.metric("Current Price", f"${current_price:,.2f}")
+            row1col2.metric("Model Accuracy", f"{accuracy:.1%}")
+            row1col3.metric("20-Day Probability", f"{probability:.1%}")
+            row1col4.metric("Risk Score", f"{risk_score}/10")
+
+            row2col1.metric("Investment Score", f"{investment_score}/100")
+            row2col2.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
+            row2col3.metric("Likely Range", f"${lower_price:,.0f} - ${upper_price:,.0f}")
 
             st.progress(float(probability))
 
