@@ -50,12 +50,16 @@ if st.button("Analyze"):
             latest = X.iloc[-1:]
             probability = model.predict_proba(latest)[0][1]
 
+            current_price = float(data["Close"].iloc[-1])
+
             st.subheader(f"{ticker} Forecast")
 
-            col1, col2 = st.columns(2)
+            col1, col2, col3 = st.columns(3)
 
-            col1.metric("Model accuracy", f"{accuracy:.1%}")
-            col2.metric("Chance higher in 20 trading days", f"{probability:.1%}")
+            col1.metric("Current Price", f"${current_price:,.2f}")
+            col2.metric("Model Accuracy", f"{accuracy:.1%}")
+            col3.metric("20-Day Probability", f"{probability:.1%}")
+    
 
             st.progress(float(probability))
 
