@@ -57,7 +57,7 @@ if st.button("Analyze"):
             else:
                 current_price = float(price_value)
 
-           recent_returns = data["Close"].pct_change().dropna().tail(60)
+            recent_returns = data["Close"].pct_change().dropna().tail(60)
 
             if hasattr(recent_returns, "columns"):
                 recent_returns = recent_returns.iloc[:, 0]
