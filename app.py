@@ -97,6 +97,17 @@ if st.button("Analyze"):
 
             row2col1, row2col2, row2col3 = st.columns(3)
 
+            row2col1, row2col2, row2col3 = st.columns(3)
+
+            investment_score = round(
+            (probability * 50) +
+            (accuracy * 30) +
+            ((10 - risk_score) / 10 * 20))
+
+            investment_score = min(100, max(0, investment_score))
+
+            row1col1.metric("Current Price", f"${current_price:,.2f}")
+
             row1col1.metric("Current Price", f"${current_price:,.2f}")
             row1col2.metric("Model Accuracy", f"{accuracy:.1%}")
             row1col3.metric("20-Day Probability", f"{probability:.1%}")
