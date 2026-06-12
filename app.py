@@ -58,7 +58,7 @@ if st.button("Analyze"):
                 current_price = float(price_value)
 
             recent_returns = data["Close"].pct_change().dropna().tail(60)
-                volatility = recent_returns.std() * 100
+            volatility = recent_returns.std() * 100
 
             risk_score = min(10, max(1, round(volatility * 2)))
 
