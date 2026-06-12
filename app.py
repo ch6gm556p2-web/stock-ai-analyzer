@@ -57,7 +57,7 @@ if st.button("Analyze"):
             else:
                 current_price = float(price_value)
 
-            st.subheader(f"{ticker}
+            st.subheader(f"{ticker})
 
             col1, col2, col3 = st.columns(3)
 
