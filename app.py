@@ -131,15 +131,14 @@ if st.button("Analyze"):
                 f"<h2>${lower_price:,.0f} - ${upper_price:,.0f}</h2>",
                 unsafe_allow_html=True
 )
-
-            row2col4.metric("Confidence", f"{confidence_score}/100)")
-            
             if confidence_score >= 75:
                 confidence_label = "High"
             elif confidence_score >= 50:
                 confidence_label = "Medium"
             else:
                 confidence_label = "Low"
+            
+            row2col4.metric("Confidence", f"{confidence_label} ({confidence_score}/100)")
     
             st.progress(float(probability))
 
