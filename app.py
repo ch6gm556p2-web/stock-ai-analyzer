@@ -67,24 +67,24 @@ if st.button("Analyze"):
 
             st.subheader(f"{ticker} Forecast")
 
-with st.expander("ℹ️ What do these metrics mean?"):
-    st.write("""
-    **Current Price**
-    Latest stock price from Yahoo Finance.
+            with st.expander("ℹ️ What do these metrics mean?"):
+                st.write("""
+            **Current Price**
+            Latest stock price from Yahoo Finance.
 
-    **Model Accuracy**
-    How often the model was correct on historical data.
+            **Model Accuracy**
+            How often the model was correct on historical data.
 
-    **20-Day Probability**
-    Estimated chance the stock will be higher in 20 trading days.
+            **20-Day Probability**
+            Estimated chance the stock will be higher in 20 trading days.
 
-    **Risk Score**
-    Volatility-based score from 1 to 10.
-    Lower = steadier.
-    Higher = more volatile.
-    """)
+            **Risk Score**
+            Volatility-based score from 1 to 10.
+            Lower = steadier.
+            Higher = more volatile.
+            """)
 
-col1, col2, col3, col4 = st.columns(4)
+            col1, col2, col3, col4 = st.columns(4)
 
             col1.metric("Current Price", f"${current_price:,.2f}")
             col2.metric("Model Accuracy", f"{accuracy:.1%}")
