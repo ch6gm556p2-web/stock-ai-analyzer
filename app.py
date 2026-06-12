@@ -57,9 +57,19 @@ if st.button("Analyze"):
             else:
                 current_price = float(price_value)
 
+            recent_returns = data["Close"].pct_change().dropna().tail(60)
+                volatility = recent_returns.std() * 100
+
+            risk_score = min(10, max(1, round(volatility * 2)))
+
             st.subheader(f"{ticker} Forecast")
 
-            col1, col2, col3 = st.columns(3)
+            col1, col2, col3, col4 = st.columns(4)
+
+            col1.metric("Current Price", f"${current_price:,.2f}")
+            col2.metric("Model Accuracy", f"{accuracy:.1%}")
+            col3.metric("20-Day Probability", f"{probability:.1%}")
+            col4.metric("Risk Score", f"{risk_score}/10")
 
             col1.metric("Current Price", f"${float(current_price):,.2f}")
             col2.metric("Model Accuracy", f"{accuracy:.1%}")
