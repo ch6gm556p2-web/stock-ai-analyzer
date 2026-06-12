@@ -56,7 +56,7 @@ if st.button("Analyze"):
 
             col1, col2, col3 = st.columns(3)
 
-            col1.metric("Current Price", f"${current_price:,.2f}")
+            col1.metric("Current Price", f"${float(current_price):,.2f}")
             col2.metric("Model Accuracy", f"{accuracy:.1%}")
             col3.metric("20-Day Probability", f"{probability:.1%}")
     
