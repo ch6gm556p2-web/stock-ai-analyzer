@@ -104,7 +104,7 @@ if st.button("Analyze"):
 
             row1col1, row1col2, row1col3, row1col4 = st.columns(4)
 
-            row2col1, row2col2, row2col3 = st.columns(3)
+            row2col1, row2col2, row2col3, row2col4 = st.columns(4)
 
             investment_score = round(
             (probability * 50) +
@@ -112,6 +112,12 @@ if st.button("Analyze"):
             ((10 - risk_score) / 10 * 20))
 
             investment_score = min(100, max(0, investment_score))
+
+            confidence_score = round(
+            accuracy * 100 * (1 - ((risk_score - 1) / 10))
+            )
+
+            confidence_score = min(100, max(0, confidence_score))
 
             row1col1.metric("Current Price", f"${current_price:,.2f}")
             row1col2.metric("Model Accuracy", f"{accuracy:.1%}")
@@ -126,6 +132,17 @@ if st.button("Analyze"):
                 unsafe_allow_html=True
 )
 
+            row2col4.metric(
+                "Confidence",
+                f"{confidence_label} ({confidence_score}/100)"
+)
+            if confidence_score >= 75:
+                confidence_label = "High"
+            elif confidence_score >= 50:
+                confidence_label = "Medium"
+            else:
+                confidence_label = "Low"
+    
             st.progress(float(probability))
 
             if probability >= 0.65 and accuracy >= 0.55:
