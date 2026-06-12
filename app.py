@@ -60,6 +60,8 @@ if st.button("Analyze"):
             recent_returns = data["Close"].pct_change().dropna().tail(60)
 
             volatility = float(recent_returns.std())
+            st.write(type(volatility))
+            st.write(volatility)
 
             risk_score = min(10, max(1, round(volatility * 200)))
 
