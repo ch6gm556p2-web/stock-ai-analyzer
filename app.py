@@ -97,8 +97,6 @@ if st.button("Analyze"):
 
             row2col1, row2col2, row2col3 = st.columns(3)
 
-            row2col1, row2col2, row2col3 = st.columns(3)
-
             investment_score = round(
             (probability * 50) +
             (accuracy * 30) +
