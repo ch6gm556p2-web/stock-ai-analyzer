@@ -60,7 +60,7 @@ if st.button("Analyze"):
            recent_returns = data["Close"].pct_change().dropna().tail(60)
 
             if hasattr(recent_returns, "columns"):
-            recent_returns = recent_returns.iloc[:, 0]
+                recent_returns = recent_returns.iloc[:, 0]
 
             volatility = recent_returns.std()
             risk_score = min(10, max(1, round(float(volatility) * 200)))
