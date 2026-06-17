@@ -185,6 +185,16 @@ if st.button("Analyze"):
             consensus = "Mixed Signals"
         else:
             consensus = "Strong Bearish Consensus"
+
+                accuracy = np.mean(
+            [r["Accuracy"] for r in model_results]
+        )
+
+        probability = np.mean(
+            [r["Probability"] for r in model_results]
+        )
+        if accuracy < 0.55:
+            consensus = f"Low Confidence ({consensus})"
             
         st.metric("20 Day Consensus", consensus)
 
@@ -197,15 +207,6 @@ if st.button("Analyze"):
                 f"{r['Probability']:.1%} probability | "
                 f"{r['Signal']}"
     )
-        accuracy = np.mean(
-            [r["Accuracy"] for r in model_results]
-        )
-
-        probability = np.mean(
-            [r["Probability"] for r in model_results]
-        )
-        if accuracy < 0.55:
-            consensus = f"Low Confidence ({consensus})"
         price_value = data["Close"].iloc[-1]
 
         if hasattr(price_value, "iloc"):
