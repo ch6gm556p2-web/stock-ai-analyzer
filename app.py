@@ -184,7 +184,7 @@ st.metric(
     f"{bullish_count}/{total_models} Bullish"
 )
 
-        for r in model_results:
+    for r in model_results:
                 st.write(
                 f"{r['Model']}: "
                 f"{r['Accuracy']:.1%} accuracy | "
@@ -203,14 +203,14 @@ st.metric(
         price_value = data["Close"].iloc[-1]
         price_value = data["Close"].iloc[-1]
 
-        if hasattr(price_value, "iloc"):
+    if hasattr(price_value, "iloc"):
                 current_price = float(price_value.iloc[0])
-        else:
+    else:
                 current_price = float(price_value)
 
         recent_returns = data["Close"].pct_change().dropna().tail(60)
 
-        if hasattr(recent_returns, "columns"):
+    if hasattr(recent_returns, "columns"):
                 recent_returns = recent_returns.iloc[:, 0]
 
         volatility = recent_returns.std()
@@ -227,7 +227,7 @@ st.metric(
         lower_price = current_price * (1 - expected_20d_move)
         upper_price = current_price * (1 + expected_20d_move)
 
-        with st.expander("ℹ️ What do these metrics mean?"):
+    with st.expander("ℹ️ What do these metrics mean?"):
                 st.write("""
                 **Current Price**  
                 Latest stock price pulled from Yahoo Finance.
