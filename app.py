@@ -167,8 +167,8 @@ if st.button("Analyze"):
         agreement = bullish_count / total_models
 
         bullish_count = sum(
-    1 for r in model_results
-    if r["Signal"] == "Bullish"
+            1 for r in model_results
+            if r["Signal"] == "Bullish"
 )
 
 total_models = len(model_results)
