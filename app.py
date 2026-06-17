@@ -185,11 +185,11 @@ if st.button("Analyze"):
         if bullish_count == total_models:
             consensus = "Strong Bullish Consensus"
         elif bullish_count >= 3:
-            consensus = "Moderate Bullish Consensus"
+            consensus = "Bullish Leaning"
         elif bullish_count == 2:
             consensus = "Mixed Signals"
         elif bullish_count == 1:
-            consensus = "Weak Bearish Consensus"
+            consensus = "Bearish Leaning"
         else:
             consensus = "Strong Bearish Consensus"
 
