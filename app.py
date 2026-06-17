@@ -186,7 +186,7 @@ if st.button("Analyze"):
         else:
             consensus = "Strong Bearish Consensus"
 
-                accuracy = np.mean(
+        accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
         )
 
