@@ -29,6 +29,13 @@ if st.button("Analyze"):
             data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
             data = data.dropna()
 
+            if len(data) < 100:
+                st.warning(
+                f"{ticker} only has {len(data)} usable trading days of history. "
+                "This is not enough for a reliable forecast yet."
+                    )
+                st.stop()
+
             features = ["Return_1d", "Return_5d", "Return_20d", "MA_20", "MA_50"]
 
             X = data[features]
