@@ -250,10 +250,11 @@ if st.button("Analyze"):
             row2col1.metric("Investment Score", f"{investment_score}/100")
             row2col2.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
             row2col3.markdown("**Likely Range**")
+
             row2col3.markdown(
-                f"<h2>${lower_price:,.0f} - ${upper_price:,.0f}</h2>",
-                unsafe_allow_html=True
-)
+            f"<h2>${lower_price:,.0f} - ${upper_price:,.0f}</h2>",
+            unsafe_allow_html=True
+            )
             if confidence_score >= 75:
                 confidence_label = "High"
             elif confidence_score >= 50:
