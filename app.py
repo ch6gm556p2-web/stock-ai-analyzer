@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
+from sklearn.ensemble import ExtraTreesClassifier
 
 from sklearn.metrics import accuracy_score
 
@@ -134,6 +135,10 @@ if st.button("Analyze"):
             ),
             "Logistic Regression": LogisticRegression(
             max_iter=1000
+            ),
+            "Extra Trees": ExtraTreesClassifier(
+            n_estimators=200,
+            random_state=42
             )
     }
         model_results = []
