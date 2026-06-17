@@ -5,6 +5,8 @@ import numpy as np
 from datetime import datetime, timedelta
 
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score
 
 st.set_page_config(page_title="AI Stock Analyzer", page_icon="📈")
@@ -116,15 +118,53 @@ if st.button("Analyze"):
             y_train = y.iloc[:split]
             y_test = y.iloc[split:]
 
-            model = RandomForestClassifier(n_estimators=200, random_state=42)
-            model.fit(X_train, y_train)
-
-            predictions = model.predict(X_test)
-            accuracy = accuracy_score(y_test, predictions)
+            from sklearn.ensemble import GradientBoostingClassifier
+            from sklearn.linear_model import LogisticRegression
 
             latest = X.iloc[-1:]
-            probability = model.predict_proba(latest)[0][1]
 
+            models = {
+            "Random Forest": RandomForestClassifier(
+            n_estimators=200,
+            random_state=42
+            ),
+            "Gradient Boosting": GradientBoostingClassifier(
+            random_state=42
+            ),
+            "Logistic Regression": LogisticRegression(
+            max_iter=1000
+            )
+        }
+
+        model_results = []
+
+        for name, m in models.items():
+
+            m.fit(X_train, y_train)
+
+            preds = m.predict(X_test)
+
+            acc = accuracy_score(y_test, preds)
+
+            prob = m.predict_proba(latest)[0][1]
+
+            signal = "Bullish" if prob >= 0.50 else "Bearish"
+
+            model_results.append({
+            "Model": name,
+            "Accuracy": acc,
+            "Probability": prob,
+            "Signal": signal
+        })
+
+        bullish_count = sum(
+            1 for r in model_results
+            if r["Signal"] == "Bullish"
+        )
+
+        total_models = len(model_results)
+
+         agreement = bullish_count / total_models
             price_value = data["Close"].iloc[-1]
 
             if hasattr(price_value, "iloc"):
