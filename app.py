@@ -18,6 +18,12 @@ if st.button("Analyze"):
     with st.spinner(f"Analyzing {ticker}..."):
         data = yf.download(ticker, period="10y", auto_adjust=True)
 
+        market = yf.download(
+             ["^VIX", "QQQ", "SPY", "TLT", "USO"],
+             period="10y",
+             auto_adjust=True
+         )["Close"]
+
         if data.empty:
             st.error("No data found. Check the ticker.")
         else:
@@ -26,6 +32,12 @@ if st.button("Analyze"):
             data["Return_20d"] = data["Close"].pct_change(20)
             data["MA_20"] = data["Close"].rolling(20).mean()
             data["MA_50"] = data["Close"].rolling(50).mean()
+
+            data["VIX"] = market["^VIX"]
+            data["QQQ_Return_20d"] = market["QQQ"].pct_change(20)
+            data["SPY_Return_20d"] = market["SPY"].pct_change(20)
+            data["TLT_Return_20d"] = market["TLT"].pct_change(20)
+            data["USO_Return_20d"] = market["USO"].pct_change(20)
 
             data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
             data = data.dropna()
@@ -49,7 +61,18 @@ if st.button("Analyze"):
 
                 st.stop()
 
-            features = ["Return_1d", "Return_5d", "Return_20d", "MA_20", "MA_50"]
+            features = [
+            "Return_1d",
+            "Return_5d",
+            "Return_20d",
+            "MA_20",
+            "MA_50",
+            "VIX",
+            "QQQ_Return_20d",
+            "SPY_Return_20d",
+            "TLT_Return_20d",
+            "USO_Return_20d"
+        ]
 
             X = data[features]
             y = data["Target"]
