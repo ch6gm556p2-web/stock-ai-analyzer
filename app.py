@@ -227,7 +227,7 @@ if st.button("Analyze"):
         lower_price = current_price * (1 - expected_20d_move)
         upper_price = current_price * (1 + expected_20d_move)
 
-    with st.expander("ℹ️ What do these metrics mean?"):
+        with st.expander("ℹ️ What do these metrics mean?"):
                 st.write("""
                 **Current Price**  
                 Latest stock price pulled from Yahoo Finance.
