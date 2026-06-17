@@ -164,7 +164,7 @@ if st.button("Analyze"):
 
         total_models = len(model_results)
 
-         agreement = bullish_count / total_models
+        agreement = bullish_count / total_models
 
         accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
