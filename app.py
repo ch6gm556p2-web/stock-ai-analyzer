@@ -7,7 +7,7 @@ from datetime import datetime, timedelta
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
-from xgboost import XGBClassifier
+
 from sklearn.metrics import accuracy_score
 
 st.set_page_config(page_title="AI Stock Analyzer", page_icon="📈")
