@@ -92,6 +92,18 @@ if st.button("Analyze"):
             "USO_Return_20d"
         ]
 
+            if ticker in ["FSELX", "SOXX", "SMH"]:
+
+                features.extend([
+
+                "NVDA_Return_20d",
+
+                "SOXX_Return_20d",
+
+                "SMH_Return_20d"
+
+                ])
+
             X = data[features]
             y = data["Target"]
 
