@@ -225,36 +225,36 @@ if st.button("Analyze"):
                 A volatility-based price range showing where the stock could reasonably move over the next 20 trading days.
                 """)
 
-            row1col1, row1col2, row1col3, row1col4 = st.columns(4)
+        row1col1, row1col2, row1col3, row1col4 = st.columns(4)
 
-            row2col1, row2col2, row2col3, row2col4 = st.columns(4)
+        row2col1, row2col2, row2col3, row2col4 = st.columns(4)
 
-            investment_score = round(
-            (probability * 50) +
-            (accuracy * 30) +
-            ((10 - risk_score) / 10 * 20))
+        investment_score = round(
+        (probability * 50) +
+        (accuracy * 30) +
+        ((10 - risk_score) / 10 * 20))
 
-            investment_score = min(100, max(0, investment_score))
+        investment_score = min(100, max(0, investment_score))
 
-            confidence_score = round(
-            accuracy * 100 * (1 - ((risk_score - 1) / 10))
-            )
+        confidence_score = round(
+        accuracy * 100 * (1 - ((risk_score - 1) / 10))
+        )
 
-            confidence_score = min(100, max(0, confidence_score))
+        confidence_score = min(100, max(0, confidence_score))
 
-            row1col1.metric("Current Price", f"${current_price:,.2f}")
-            row1col2.metric("Model Accuracy", f"{accuracy:.1%}")
-            row1col3.metric("20-Day Probability", f"{probability:.1%}")
-            row1col4.metric("Risk Score", f"{risk_score}/10")
+        row1col1.metric("Current Price", f"${current_price:,.2f}")
+        row1col2.metric("Model Accuracy", f"{accuracy:.1%}")
+        row1col3.metric("20-Day Probability", f"{probability:.1%}")
+        row1col4.metric("Risk Score", f"{risk_score}/10")
 
-            row2col1.metric("Investment Score", f"{investment_score}/100")
-            row2col2.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
-            row2col3.markdown("**Likely Range**")
+        row2col1.metric("Investment Score", f"{investment_score}/100")
+        row2col2.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
+        row2col3.markdown("**Likely Range**")
 
-            row2col3.markdown(
-            f"<h2>${lower_price:,.0f} - ${upper_price:,.0f}</h2>",
-            unsafe_allow_html=True
-            )
+        row2col3.markdown(
+        f"<h2>${lower_price:,.0f} - ${upper_price:,.0f}</h2>",
+        unsafe_allow_html=True
+        )
             if confidence_score >= 75:
                 confidence_label = "High"
             elif confidence_score >= 50:
@@ -262,9 +262,9 @@ if st.button("Analyze"):
             else:
                 confidence_label = "Low"
             
-            row2col4.metric("Confidence", confidence_label)
+        row2col4.metric("Confidence", confidence_label)
     
-            st.progress(float(probability))
+        st.progress(float(probability))
 
             if probability >= 0.65 and accuracy >= 0.55:
                 rating = "Potential Buy"
@@ -273,12 +273,12 @@ if st.button("Analyze"):
             else:
                 rating = "Avoid / Wait"
 
-            st.subheader(f"Rating: {rating}")
+        st.subheader(f"Rating: {rating}")
 
-            st.line_chart(data["Close"].tail(252))
+        st.line_chart(data["Close"].tail(252))
 
-            st.caption(
+        st.caption(
                 "Educational model only, not financial advice. "
                 "The market remains annoyingly allergic to certainty."
             
-            )
+        )
