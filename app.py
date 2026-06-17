@@ -173,7 +173,7 @@ if st.button("Analyze"):
         probability = np.mean(
             [r["Probability"] for r in model_results]
         ) 
-            price_value = data["Close"].iloc[-1]
+        price_value = data["Close"].iloc[-1]
 
             if hasattr(price_value, "iloc"):
                 current_price = float(price_value.iloc[0])
