@@ -7,6 +7,7 @@ from datetime import datetime, timedelta
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 from sklearn.linear_model import LogisticRegression
+from xgboost import XGBClassifier
 from sklearn.metrics import accuracy_score
 
 st.set_page_config(page_title="AI Stock Analyzer", page_icon="📈")
@@ -134,8 +135,14 @@ if st.button("Analyze"):
             "Logistic Regression": LogisticRegression(
             max_iter=1000
             )
-        }
-
+            "XGBoost": XGBClassifier(
+            n_estimators=200,
+            learning_rate=0.05,
+            max_depth=3,
+            random_state=42,
+            eval_metric="logloss"
+            )
+    }
         model_results = []
 
         for name, m in models.items():
@@ -177,12 +184,14 @@ if st.button("Analyze"):
 
         agreement_pct = round(agreement * 100)
 
-        if bullish_count == 3:
+        if bullish_count == total_models:
             consensus = "Strong Bullish Consensus"
-        elif bullish_count == 2:
+        elif bullish_count >= 3:
             consensus = "Moderate Bullish Consensus"
-        elif bullish_count == 1:
+        elif bullish_count == 2:
             consensus = "Mixed Signals"
+        elif bullish_count == 1:
+            consensus = "Weak Bearish Consensus"
         else:
             consensus = "Strong Bearish Consensus"
 
