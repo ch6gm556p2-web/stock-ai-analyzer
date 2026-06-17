@@ -255,22 +255,22 @@ if st.button("Analyze"):
         f"<h2>${lower_price:,.0f} - ${upper_price:,.0f}</h2>",
         unsafe_allow_html=True
         )
-            if confidence_score >= 75:
+        if confidence_score >= 75:
                 confidence_label = "High"
-            elif confidence_score >= 50:
+        elif confidence_score >= 50:
                 confidence_label = "Medium"
-            else:
+        else:
                 confidence_label = "Low"
             
         row2col4.metric("Confidence", confidence_label)
     
         st.progress(float(probability))
 
-            if probability >= 0.65 and accuracy >= 0.55:
+        if probability >= 0.65 and accuracy >= 0.55:
                 rating = "Potential Buy"
-            elif probability >= 0.50:
+        elif probability >= 0.50:
                 rating = "Hold / Watch"
-            else:
+        else:
                 rating = "Avoid / Wait"
 
         st.subheader(f"Rating: {rating}")
