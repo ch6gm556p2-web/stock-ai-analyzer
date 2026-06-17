@@ -57,8 +57,8 @@ if st.button("Analyze"):
 
                 data["SMH_Return_20d"] = semi["SMH"].pct_change(20)
 
-                data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
-                data = data.dropna()
+            data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
+            data = data.dropna()
 
             usable_days = len(data)
 
