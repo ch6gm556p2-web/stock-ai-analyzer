@@ -39,17 +39,17 @@ if st.button("Analyze"):
             data["TLT_Return_20d"] = market["TLT"].pct_change(20)
             data["USO_Return_20d"] = market["USO"].pct_change(20)
 
-        if ticker in ["FSELX", "SOXX", "SMH"]:
+            if ticker in ["FSELX", "SOXX", "SMH"]:
 
-            semi = yf.download(
+                semi = yf.download(
 
-            ["NVDA", "SOXX", "SMH"],
+                ["NVDA", "SOXX", "SMH"],
 
-            period="10y",
+                period="10y",
 
-            auto_adjust=True
+                auto_adjust=True
 
-            )["Close"]
+                )["Close"]
 
             data["NVDA_Return_20d"] = semi["NVDA"].pct_change(20)
 
@@ -91,6 +91,8 @@ if st.button("Analyze"):
             "TLT_Return_20d",
             "USO_Return_20d"
         ]
+
+            
 
             if ticker in ["FSELX", "SOXX", "SMH"]:
 
