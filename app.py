@@ -175,14 +175,14 @@ if st.button("Analyze"):
         ) 
         price_value = data["Close"].iloc[-1]
 
-            if hasattr(price_value, "iloc"):
+        if hasattr(price_value, "iloc"):
                 current_price = float(price_value.iloc[0])
-            else:
+        else:
                 current_price = float(price_value)
 
             recent_returns = data["Close"].pct_change().dropna().tail(60)
 
-            if hasattr(recent_returns, "columns"):
+        if hasattr(recent_returns, "columns"):
                 recent_returns = recent_returns.iloc[:, 0]
 
             volatility = recent_returns.std()
