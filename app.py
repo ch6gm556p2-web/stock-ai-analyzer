@@ -165,6 +165,14 @@ if st.button("Analyze"):
         total_models = len(model_results)
 
          agreement = bullish_count / total_models
+
+        accuracy = np.mean(
+            [r["Accuracy"] for r in model_results]
+        )
+
+        probability = np.mean(
+            [r["Probability"] for r in model_results]
+        ) 
             price_value = data["Close"].iloc[-1]
 
             if hasattr(price_value, "iloc"):
