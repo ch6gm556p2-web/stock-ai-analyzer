@@ -186,10 +186,10 @@ if st.button("Analyze"):
         else:
             consensus = "Strong Bearish Consensus"
 
-        st.metric("20 Day Consensus", consensus)
-
         if accuracy < 0.55:
             consensus = f"Low Confidence ({consensus})"
+            
+        st.metric("20 Day Consensus", consensus)
 
         st.subheader("AI Models")
 
