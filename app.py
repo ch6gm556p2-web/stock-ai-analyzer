@@ -166,6 +166,17 @@ if st.button("Analyze"):
 
         agreement = bullish_count / total_models
 
+        st.subheader("Model Agreement")
+
+        agreement_pct = round(agreement * 100)
+
+        st.metric(
+        "Agreement",
+        f"{bullish_count}/{total_models} Bullish"
+        )
+
+        st.write(model_results)
+
         accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
         )
