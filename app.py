@@ -39,14 +39,14 @@ if st.button("Analyze"):
 
             estimated_date = datetime.today() + timedelta(days=days_needed * 1.4)
 
-        st.warning(
-        f"{ticker} currently has {usable_days} usable trading days.\n\n"
-        f"At least {required_days} usable trading days are recommended.\n\n"
-        f"Estimated trading days still needed: {days_needed}\n\n"
-        f"Approximate forecast availability: {estimated_date.strftime('%B %d, %Y')}"
-        )
+            st.warning(
+            f"{ticker} currently has {usable_days} usable trading days.\n\n"
+            f"At least {required_days} usable trading days are recommended.\n\n"
+            f"Estimated trading days still needed: {days_needed}\n\n"
+            f"Approximate forecast availability: {estimated_date.strftime('%B %d, %Y')}"
+            )
 
-        st.stop()
+            st.stop()
 
             features = ["Return_1d", "Return_5d", "Return_20d", "MA_20", "MA_50"]
 
