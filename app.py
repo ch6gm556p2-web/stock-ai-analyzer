@@ -39,7 +39,7 @@ if st.button("Analyze"):
             data["TLT_Return_20d"] = market["TLT"].pct_change(20)
             data["USO_Return_20d"] = market["USO"].pct_change(20)
 
-            if ticker in ["FSELX", "SOXX", "SMH"]:
+        if ticker in ["FSELX", "SOXX", "SMH"]:
 
                 semi = yf.download(
 
