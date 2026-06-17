@@ -191,7 +191,16 @@ if st.button("Analyze"):
                 f"{r['Probability']:.1%} probability | "
                 f"{r['Signal']}"
         )
+        if bullish_count == 3:
+            consensus = "Strong Bullish Consensus"
+        elif bullish_count == 2:
+            consensus = "Moderate Bullish Consensus"
+        elif bullish_count == 1:
+            consensus = "Mixed Signals"
+        else:
+        consensus = "Strong Bearish Consensus"
 
+        st.metric("Consensus", consensus)
         accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
         )
