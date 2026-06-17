@@ -166,24 +166,41 @@ if st.button("Analyze"):
 
         agreement = bullish_count / total_models
 
-        st.subheader("Model Agreement")
+        bullish_count = sum(
+    1 for r in model_results
+    if r["Signal"] == "Bullish"
+)
 
-        agreement_pct = round(agreement * 100)
+total_models = len(model_results)
 
-        st.metric(
-        "Agreement",
-        f"{bullish_count}/{total_models} Bullish"
-        )
+agreement = bullish_count / total_models
 
-        st.write(model_results)
+agreement_pct = round(agreement * 100)
 
-        accuracy = np.mean(
-            [r["Accuracy"] for r in model_results]
-        )
+st.subheader("Model Agreement")
 
-        probability = np.mean(
-            [r["Probability"] for r in model_results]
-        ) 
+st.metric(
+    "Agreement",
+    f"{bullish_count}/{total_models} Bullish"
+)
+
+for r in model_results:
+    st.write(
+        f"{r['Model']}: "
+        f"{r['Accuracy']:.1%} accuracy | "
+        f"{r['Probability']:.1%} probability | "
+        f"{r['Signal']}"
+    )
+
+accuracy = np.mean(
+    [r["Accuracy"] for r in model_results]
+)
+
+probability = np.mean(
+    [r["Probability"] for r in model_results]
+)
+
+price_value = data["Close"].iloc[-1]
         price_value = data["Close"].iloc[-1]
 
         if hasattr(price_value, "iloc"):
