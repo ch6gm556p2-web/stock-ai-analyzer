@@ -200,7 +200,7 @@ if st.button("Analyze"):
         probability = np.mean(
             [r["Probability"] for r in model_results]
         )
-        if accuracy < 0.55:
+        if accuracy < 0.50:
             consensus = f"Low Confidence ({consensus})"
             
         st.metric("20 Day Consensus", consensus)
