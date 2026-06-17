@@ -29,12 +29,24 @@ if st.button("Analyze"):
             data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
             data = data.dropna()
 
-            if len(data) < 100:
-                st.warning(
-                f"{ticker} only has {len(data)} usable trading days of history. "
-                "This is not enough for a reliable forecast yet."
-                    )
-                st.stop()
+            usable_days = len(data)
+
+            required_days = 100
+            days_needed = max(0, required_days - usable_days)
+
+            if usable_days < required_days:
+                from datetime import datetime, timedelta
+
+            estimated_date = datetime.today() + timedelta(days=days_needed * 1.4)
+
+        st.warning(
+        f"{ticker} currently has {usable_days} usable trading days.\n\n"
+        f"At least {required_days} usable trading days are recommended.\n\n"
+        f"Estimated trading days still needed: {days_needed}\n\n"
+        f"Approximate forecast availability: {estimated_date.strftime('%B %d, %Y')}"
+        )
+
+        st.stop()
 
             features = ["Return_1d", "Return_5d", "Return_20d", "MA_20", "MA_50"]
 
