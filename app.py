@@ -185,19 +185,19 @@ if st.button("Analyze"):
         if hasattr(recent_returns, "columns"):
                 recent_returns = recent_returns.iloc[:, 0]
 
-            volatility = recent_returns.std()
-            risk_score = min(10, max(1, round(float(volatility) * 200)))
+        volatility = recent_returns.std()
+        risk_score = min(10, max(1, round(float(volatility) * 200)))
 
-            st.subheader(f"{ticker} Forecast")
+        st.subheader(f"{ticker} Forecast")
 
-            expected_20d_move = volatility * (20 ** 0.5)
+        expected_20d_move = volatility * (20 ** 0.5)
 
-            direction_adjustment = (probability - 0.5) * expected_20d_move
+        direction_adjustment = (probability - 0.5) * expected_20d_move
 
-            estimated_20d_price = current_price * (1 + direction_adjustment)
+        estimated_20d_price = current_price * (1 + direction_adjustment)
 
-            lower_price = current_price * (1 - expected_20d_move)
-            upper_price = current_price * (1 + expected_20d_move)
+        lower_price = current_price * (1 - expected_20d_move)
+        upper_price = current_price * (1 + expected_20d_move)
 
             with st.expander("ℹ️ What do these metrics mean?"):
                 st.write("""
