@@ -184,7 +184,7 @@ st.metric(
     f"{bullish_count}/{total_models} Bullish"
 )
 
-    for r in model_results:
+for r in model_results:
                 st.write(
                 f"{r['Model']}: "
                 f"{r['Accuracy']:.1%} accuracy | "
