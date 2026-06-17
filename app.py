@@ -51,14 +51,14 @@ if st.button("Analyze"):
 
                 )["Close"]
 
-            data["NVDA_Return_20d"] = semi["NVDA"].pct_change(20)
+                data["NVDA_Return_20d"] = semi["NVDA"].pct_change(20)
 
-            data["SOXX_Return_20d"] = semi["SOXX"].pct_change(20)
+                data["SOXX_Return_20d"] = semi["SOXX"].pct_change(20)
 
-            data["SMH_Return_20d"] = semi["SMH"].pct_change(20)
+                data["SMH_Return_20d"] = semi["SMH"].pct_change(20)
 
-            data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
-            data = data.dropna()
+                data["Target"] = (data["Close"].shift(-20) > data["Close"]).astype(int)
+                data = data.dropna()
 
             usable_days = len(data)
 
