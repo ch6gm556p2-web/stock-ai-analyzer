@@ -192,11 +192,11 @@ for r in model_results:
                 f"{r['Signal']}"
         )
 
-        accuracy = np.mean(
+accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
         )
 
-        probability = np.mean(
+probability = np.mean(
             [r["Probability"] for r in model_results]
         )
 
