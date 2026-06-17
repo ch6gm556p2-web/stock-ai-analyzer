@@ -177,12 +177,7 @@ if st.button("Analyze"):
 
         agreement_pct = round(agreement * 100)
 
-        st.subheader("Model Agreement")
-
-        st.metric(
-        "Agreement",
-        f"{bullish_count}/{total_models} Bullish"
-        )
+        st.subheader("AI Models"
 
         for r in model_results:
                 st.write(
