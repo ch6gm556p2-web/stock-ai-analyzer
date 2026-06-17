@@ -177,15 +177,6 @@ if st.button("Analyze"):
 
         agreement_pct = round(agreement * 100)
 
-        st.subheader("AI Models")
-
-        for r in model_results:
-                st.write(
-                f"{r['Model']}: "
-                f"{r['Accuracy']:.1%} accuracy | "
-                f"{r['Probability']:.1%} probability | "
-                f"{r['Signal']}"
-        )
         if bullish_count == 3:
             consensus = "Strong Bullish Consensus"
         elif bullish_count == 2:
@@ -196,6 +187,16 @@ if st.button("Analyze"):
             consensus = "Strong Bearish Consensus"
 
         st.metric("Consensus", consensus)
+
+        st.subheader("AI Models")
+
+        for r in model_results:
+            st.write(
+                f"{r['Model']}: "
+                f"{r['Accuracy']:.1%} accuracy | "
+                f"{r['Probability']:.1%} probability | "
+                f"{r['Signal']}"
+    )
         accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
         )
@@ -204,7 +205,6 @@ if st.button("Analyze"):
             [r["Probability"] for r in model_results]
         )
 
-        price_value = data["Close"].iloc[-1]
         price_value = data["Close"].iloc[-1]
 
         if hasattr(price_value, "iloc"):
