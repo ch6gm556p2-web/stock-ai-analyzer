@@ -184,23 +184,23 @@ st.metric(
     f"{bullish_count}/{total_models} Bullish"
 )
 
-for r in model_results:
-    st.write(
+    for r in model_results:
+        st.write(
         f"{r['Model']}: "
         f"{r['Accuracy']:.1%} accuracy | "
         f"{r['Probability']:.1%} probability | "
         f"{r['Signal']}"
     )
 
-accuracy = np.mean(
-    [r["Accuracy"] for r in model_results]
-)
+        accuracy = np.mean(
+            [r["Accuracy"] for r in model_results]
+        )
 
-probability = np.mean(
-    [r["Probability"] for r in model_results]
-)
+        probability = np.mean(
+            [r["Probability"] for r in model_results]
+        )
 
-price_value = data["Close"].iloc[-1]
+        price_value = data["Close"].iloc[-1]
         price_value = data["Close"].iloc[-1]
 
         if hasattr(price_value, "iloc"):
