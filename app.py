@@ -177,7 +177,7 @@ if st.button("Analyze"):
 
         agreement_pct = round(agreement * 100)
 
-        st.subheader("AI Models"
+        st.subheader("AI Models")
 
         for r in model_results:
                 st.write(
