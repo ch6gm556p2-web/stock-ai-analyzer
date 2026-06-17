@@ -134,13 +134,6 @@ if st.button("Analyze"):
             ),
             "Logistic Regression": LogisticRegression(
             max_iter=1000
-            ),
-            "XGBoost": XGBClassifier(
-            n_estimators=200,
-            learning_rate=0.05,
-            max_depth=3,
-            random_state=42,
-            eval_metric="logloss"
             )
     }
         model_results = []
