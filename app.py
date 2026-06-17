@@ -277,7 +277,7 @@ if st.button("Analyze"):
         row1col1.metric("Current Price", f"${current_price:,.2f}")
         row1col2.metric("Model Accuracy", f"{accuracy:.1%}")
         row1col3.metric("20-Day Probability", f"{probability:.1%}")
-        row1col4.metric("Risk Score", f"{risk_score}/10")
+        row1col4.metric("Volitility Score", f"{risk_score}/10")
 
         row2col1.metric("Investment Score", f"{investment_score}/100")
         row2col2.metric("Est. 20-Day Value", f"${estimated_20d_price:,.2f}")
