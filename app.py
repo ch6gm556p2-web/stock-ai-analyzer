@@ -184,13 +184,13 @@ st.metric(
     f"{bullish_count}/{total_models} Bullish"
 )
 
-    for r in model_results:
-        st.write(
-        f"{r['Model']}: "
-        f"{r['Accuracy']:.1%} accuracy | "
-        f"{r['Probability']:.1%} probability | "
-        f"{r['Signal']}"
-    )
+        for r in model_results:
+            st.write(
+            f"{r['Model']}: "
+            f"{r['Accuracy']:.1%} accuracy | "
+            f"{r['Probability']:.1%} probability | "
+            f"{r['Signal']}"
+        )
 
         accuracy = np.mean(
             [r["Accuracy"] for r in model_results]
