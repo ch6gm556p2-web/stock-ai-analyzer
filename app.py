@@ -198,7 +198,7 @@ if st.button("Analyze"):
         elif bullish_count == 1:
             consensus = "Mixed Signals"
         else:
-        consensus = "Strong Bearish Consensus"
+            consensus = "Strong Bearish Consensus"
 
         st.metric("Consensus", consensus)
         accuracy = np.mean(
